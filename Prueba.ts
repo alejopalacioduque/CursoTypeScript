@@ -25,9 +25,29 @@ var b = 12
 if(a = 7){
     let a = 4;
     var b = 1;
-    console.log("Dentro del if -->" + a +" - " + b)
+    console.log("Dentro del if -->" + a +" - " + b);
 }
 
-console.log("Fuera del if -->" + a +" - " + b)
+console.log("Fuera del if -->" + a +" - " + b);
+
+// funciones y tipado
+
+function devuelveNumero(num:number):string{
+    return "numero devuelto "  +num;
+}
+
+function devuelveString(texto:string): number{
+    if(texto == "hola") {
+        var num = 69;
+    }else{
+        var num = 10;
+    }
+    return num;
+}
+
+alert(devuelveNumero(34));
+alert(devuelveString("nada"));
+
+
 
 
