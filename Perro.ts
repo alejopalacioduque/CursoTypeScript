@@ -36,14 +36,15 @@ class Perro extends  animal implements  animalDomestico {
     private colorPelo : string;
     private furia : number;
     private nombreDuenio : string;
+    private nombrePerro : string;
 
     constructor(colorPelo : any = null){
         super(9, false);
         if(colorPelo == null){
-    this.colorPelo = "Negro";
-} else{
-    this.colorPelo = colorPelo;
-}
+            this.colorPelo = "Negro";
+        } else{
+            this.colorPelo = colorPelo;
+        }
     }
 
     public getColorPelo(): string {
@@ -78,6 +79,14 @@ class Perro extends  animal implements  animalDomestico {
      this.nombreDuenio = duenio;
     }
 
+    public getNombrePerro(): string {
+        return this.nombrePerro;
+    }
+
+    public  setNombrePerro (nombre : string){
+        this.nombrePerro = nombre;
+    }
+
     public getAllData(){
         return "Perro: " +" pelo:" +perro.getColorPelo() + " edad:" + perro.getEdad() +
             " peligroso: " + perro.getPeligroso() + " furia: " + this.getFuria() + " enojo: " +
@@ -90,7 +99,28 @@ perro.setColorPelo("Rojo");
 perro.setEdad(20);
 perro.setPeligroso(false);
 perro.setNombreDuenio("Saturnino");
+perro.setNombrePerro("Kamiski");
 perro.setfuria(10);
 perro.enojar();
 
 console.log(perro.getAllData());
+
+var perros : Array<Perro> = [];
+
+function guardar(){
+    var nombre : string = (<HTMLInputElement>document.getElementById("nombre")).value.toString();
+
+    var can = new Perro();
+    can.setNombrePerro(nombre);
+    perros.push(can);
+
+    var list = "";
+
+    for (var i = 0; i< perros.length ; i++){
+        list = list + "<li>" + perros[i].getNombrePerro()+"</li>";
+    }
+
+    var listaPerros = <HTMLElement> document.getElementById("listado");
+    listaPerros.innerHTML = list;
+    (<HTMLInputElement>document.getElementById("nombre")).value = "";
+}
