@@ -1,7 +1,16 @@
 /**
  * Created by alejandropalacio on 13/02/17.
  */
+module Veterinaria {
+    export class Medico {
+        constructor (public nombreMedico: string){
+            alert(nombreMedico)
+        }
+    }
+}
 
+import ClinicaVeterinaria = Veterinaria.Medico;
+let cargar_veterinaria = new ClinicaVeterinaria('Clinica')
 
 function arranque(lanzar: string){
     return function(target : Function){

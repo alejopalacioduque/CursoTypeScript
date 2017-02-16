@@ -1,11 +1,3 @@
-/**
- * Created by alejandropalacio on 13/02/17.
- */
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -15,6 +7,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+/**
+ * Created by alejandropalacio on 13/02/17.
+ */
+var Veterinaria;
+(function (Veterinaria) {
+    class Medico {
+        constructor(nombreMedico) {
+            this.nombreMedico = nombreMedico;
+            alert(nombreMedico);
+        }
+    }
+    Veterinaria.Medico = Medico;
+})(Veterinaria || (Veterinaria = {}));
+var ClinicaVeterinaria = Veterinaria.Medico;
+let cargar_veterinaria = new ClinicaVeterinaria('Clinica');
 function arranque(lanzar) {
     return function (target) {
         target.prototype.lanzamiento = function () {
@@ -22,80 +29,75 @@ function arranque(lanzar) {
         };
     };
 }
-var Animal = (function () {
-    function Animal(edad, peligroso) {
+let Animal = class Animal {
+    constructor(edad, peligroso) {
         this.edad = edad;
         this.peligroso = peligroso;
     }
-    Animal.prototype.getEdad = function () {
+    getEdad() {
         return this.edad;
-    };
-    Animal.prototype.setEdad = function (edad) {
+    }
+    setEdad(edad) {
         this.edad = edad;
-    };
-    Animal.prototype.getPeligroso = function () {
+    }
+    getPeligroso() {
         return this.peligroso;
-    };
-    Animal.prototype.setPeligroso = function (peligroso) {
+    }
+    setPeligroso(peligroso) {
         this.peligroso = peligroso;
-    };
-    return Animal;
-}());
+    }
+};
 Animal = __decorate([
     arranque('algo'),
     __metadata("design:paramtypes", [Number, Boolean])
 ], Animal);
 var an = new Animal(12, false);
-var Perro = (function (_super) {
-    __extends(Perro, _super);
-    function Perro(colorPelo) {
-        if (colorPelo === void 0) { colorPelo = null; }
-        var _this = _super.call(this, 9, false) || this;
+class Perro extends Animal {
+    constructor(colorPelo = null) {
+        super(9, false);
         if (colorPelo == null) {
-            _this.colorPelo = "Negro";
+            this.colorPelo = "Negro";
         }
         else {
-            _this.colorPelo = colorPelo;
+            this.colorPelo = colorPelo;
         }
-        return _this;
     }
-    Perro.prototype.getColorPelo = function () {
+    getColorPelo() {
         return this.colorPelo;
-    };
-    Perro.prototype.setColorPelo = function (value) {
+    }
+    setColorPelo(value) {
         this.colorPelo = value;
-    };
-    Perro.prototype.enojar = function () {
+    }
+    enojar() {
         return this.furia++;
-    };
-    Perro.prototype.calma = function () {
+    }
+    calma() {
         return this.furia--;
-    };
-    Perro.prototype.setfuria = function (fury) {
+    }
+    setfuria(fury) {
         this.furia = fury;
-    };
-    Perro.prototype.getFuria = function () {
+    }
+    getFuria() {
         return this.furia;
-    };
-    Perro.prototype.getNombreDuenio = function () {
+    }
+    getNombreDuenio() {
         return this.nombreDuenio;
-    };
-    Perro.prototype.setNombreDuenio = function (duenio) {
+    }
+    setNombreDuenio(duenio) {
         this.nombreDuenio = duenio;
-    };
-    Perro.prototype.getNombrePerro = function () {
+    }
+    getNombrePerro() {
         return this.nombrePerro;
-    };
-    Perro.prototype.setNombrePerro = function (nombre) {
+    }
+    setNombrePerro(nombre) {
         this.nombrePerro = nombre;
-    };
-    Perro.prototype.getAllData = function () {
+    }
+    getAllData() {
         return "Perro: " + " pelo:" + perro.getColorPelo() + " edad:" + perro.getEdad() +
             " peligroso: " + perro.getPeligroso() + " furia: " + this.getFuria() + " enojo: " +
             this.enojar() + " --> " + this.enojar();
-    };
-    return Perro;
-}(Animal));
+    }
+}
 var perro = new Perro();
 perro.setColorPelo("Rojo");
 perro.setEdad(20);
