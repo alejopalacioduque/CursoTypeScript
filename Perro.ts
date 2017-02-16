@@ -2,9 +2,19 @@
  * Created by alejandropalacio on 13/02/17.
  */
 
-class animal {
-    private edad : number;
-    private peligroso: boolean;
+
+function arranque(lanzar: string){
+    return function(target : Function){
+        target.prototype.lanzamiento = function(): void{
+            console.log(lanzar);
+        }
+    }
+}
+
+@arranque('algo')
+class Animal {
+    public edad : number;
+    public peligroso: boolean;
 
     constructor (edad : number, peligroso : boolean) {
         this.edad = edad;
@@ -27,12 +37,15 @@ class animal {
     }
 }
 
+var an = new Animal(12, false);
+
+
 interface animalDomestico {
     getNombreDuenio();
     setNombreDuenio(nombre : string);
 }
 
-class Perro extends  animal implements  animalDomestico {
+class Perro extends  Animal implements  animalDomestico {
     private colorPelo : string;
     private furia : number;
     private nombreDuenio : string;

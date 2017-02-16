@@ -6,25 +6,46 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var animal = (function () {
-    function animal(edad, peligroso) {
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+function arranque(lanzar) {
+    return function (target) {
+        target.prototype.lanzamiento = function () {
+            console.log(lanzar);
+        };
+    };
+}
+var Animal = (function () {
+    function Animal(edad, peligroso) {
         this.edad = edad;
         this.peligroso = peligroso;
     }
-    animal.prototype.getEdad = function () {
+    Animal.prototype.getEdad = function () {
         return this.edad;
     };
-    animal.prototype.setEdad = function (edad) {
+    Animal.prototype.setEdad = function (edad) {
         this.edad = edad;
     };
-    animal.prototype.getPeligroso = function () {
+    Animal.prototype.getPeligroso = function () {
         return this.peligroso;
     };
-    animal.prototype.setPeligroso = function (peligroso) {
+    Animal.prototype.setPeligroso = function (peligroso) {
         this.peligroso = peligroso;
     };
-    return animal;
+    return Animal;
 }());
+Animal = __decorate([
+    arranque('algo'),
+    __metadata("design:paramtypes", [Number, Boolean])
+], Animal);
+var an = new Animal(12, false);
 var Perro = (function (_super) {
     __extends(Perro, _super);
     function Perro(colorPelo) {
@@ -74,7 +95,7 @@ var Perro = (function (_super) {
             this.enojar() + " --> " + this.enojar();
     };
     return Perro;
-}(animal));
+}(Animal));
 var perro = new Perro();
 perro.setColorPelo("Rojo");
 perro.setEdad(20);
